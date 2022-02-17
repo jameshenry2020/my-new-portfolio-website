@@ -1,0 +1,95 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Personal Portfolio Website Design Tutorial</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+</head>
+
+
+  <body>
+<!-- header section starts  -->
+
+<header>
+
+    <div id="menu-bars" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="{%url 'home'%}">home</a>
+        <a href="#about">about</a>
+        <a href="#portfolio">portfolio</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+{% block content %}
+
+
+{% endblock content %}
+
+
+
+<!-- footer section  -->
+
+<div class="footer">
+     created by <span> henry web solution </span> | all rights reserved! 
+</div>
+
+
+
+<!-- javascript part  -->
+
+<!-- typed.js link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+<!-- particles.js links  -->
+<script src="{%static 'js/particles.min.js'%}"></script>
+<script src="{%static 'js/app.js'%}"></script>
+
+<!-- vanilla-tilt.js link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+{%block script%}
+<script>
+
+let menu = document.querySelector('#menu-bars');
+let header = document.querySelector('header');
+
+menu.onclick = () =>{
+    menu.classList.toggle('fa-times');
+    header.classList.toggle('active');
+}
+
+window.onscroll = () =>{
+    menu.classList.remove('fa-times');
+    header.classList.remove('active');
+};
+
+var typed = new Typed('.typing-text', {
+    strings : ['front end developer', 'python backend developer', 'software developer', 'content creator'],
+    loop : true,
+    typeSpeed : 180
+});
+
+VanillaTilt.init(document.querySelectorAll('.tilt'),{
+    max:25
+});
+
+</script>
+{%endblock script%}
+
+
+
+</body>
+
+</html>

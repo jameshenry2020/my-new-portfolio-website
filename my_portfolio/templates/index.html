@@ -1,0 +1,139 @@
+{%extends "base.html"%}
+{%load static%}
+
+
+
+{%block content%}
+<!-- home section starts  -->
+<section class="home" id="home">
+
+    <div id="particles-js"></div>
+
+    <div class="content">
+        <img class="tilt" src="{%static 'images/me.jpg'%}" alt="">
+        <h3> Henry <span>A. James</span> </h3>
+        <p> i am a <span class="typing-text">python backend developer </span> </p>
+        <a href="#about" class="btn">about me</a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+<div>
+    <p style="color:#fff; font-size: 20px; text-align: center;"> {{msg}}</p>
+</div>
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> about <span>me</span> </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img class="tilt" src="{%static 'images/my-channel.jpg'%}" alt="">
+        </div>
+
+        <div class="content">
+            <h3> my name is <span> Henry </span> </h3>
+            <p class="info">am a fullstack developer with over 4 years of experience,i build web app, website, api's, and other backend services.
+                 i currently run an educational youtube channel where i teach tech topics, and programming. i have worked as a 
+                 freelanzer for both local and international clients,engage in some contract jobs as a developer.i love building new
+                  project and also eager to learn and improve my skills.i am open to new jobs, full time, part time, contracts. remote </p><hr>
+                  <div class="line"></div>
+                  <h3>Top Expertise</h3>
+                  <p class="skill-intro">full stack developer with primary focus on python ,django and reactjs : <a href="">Download Resume</a></p>
+            <div class="box-container">
+                <div class="box">
+                    <p> <span> Python programming</span> </p>
+                    <p> <span>Django</span>  </p>
+                    <p> <span>Django restframework </span></p>
+                    <p> <span>Django Graphene </span></p>
+                    <p><span>Django channels/ websocket</span></p>
+                </div>
+                <div class="box">
+                    <p> <span> HTML/CSS </span> </p>
+                    <p> <span> Javascript/ reactjs </span> </p>
+                    <p> <span> postgresql</span> </p>
+                    <p> <span>Git /GitHub </span></p>
+                    <p><span>deployment(digital ocean, aws)</span></p>
+                </div>
+            </div>
+            <a href="#" class="btn">download CV</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- portfolio section starts  -->
+
+<section class="portfolio" id="portfolio">
+
+    <h1 class="heading"> <span> my </span> portfolio </h1>
+
+    <div class="box-container">
+       {%for proj in projects %}
+        <div class="box tilt">
+            <img src="{{proj.image_thumbnail.url}}" alt="">
+            <div class="content">
+                <a href="{{proj.get_absolute_url}}" class="btn">learn more</a>
+            </div>
+        </div>
+        {% endfor %}
+
+       
+    </div>
+    
+</section>
+
+<!-- portfolio section ends -->
+
+
+<!-- contact section starts  -->
+>
+<section class="contact" id="contact">
+
+    <h1 class="heading"> contact <span> me </span> </h1>
+    <h3>my email : aengrhenry@gmail.com ,   <a href="https://www.linkedin.com/in/james-henry-2b2176164/" target="_blank">my linkedin</a></h3>
+
+    <div class="row">
+
+        <div class="image">
+            <img class="tilt" src="{%static 'images/contact-img.svg'%}" alt="">
+        </div>
+
+        <form method="POST" action="{%url 'contact'%}">
+                {% csrf_token %}
+            
+            <input type="email" name="client_email" class="box" placeholder="email">
+            
+            <input type="text" name="subject" placeholder="subject" class="box">
+
+            <textarea placeholder="message" name="message" id="" cols="30" rows="10"></textarea>
+
+            <input type="submit" class="btn" value="send message">
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- contact section ends -->
+
+{%endblock content%}
+
+
+
+
+
+
+
+
+
+
+
+
